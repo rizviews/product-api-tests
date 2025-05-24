@@ -16,9 +16,9 @@ test.describe('Test Products API', () => {
     expect(response.status()).toBe(200);
 
     const responseBody = await response.json();
-    expect(Array.isArray(responseBody)).toBeTruthy();
+    expect(Array.isArray(responseBody.data)).toBeTruthy();
 
-    expect(responseBody).toContainEqual(expect.objectContaining({
+    expect(responseBody.data).toContainEqual(expect.objectContaining({
       "name": "Combination Pliers",
     }));
   });
@@ -46,7 +46,7 @@ test.describe('Test Products API', () => {
     const response = await restHelper.get('/products', { is_rental: 'true' });
     expect(response.ok()).toBeTruthy();
     const products = await response.json();
-    products.forEach((product: any) => {
+    products.data.forEach((product: any) => {
       expect(product.is_rental).toBe(true);
     });
   });
@@ -55,7 +55,7 @@ test.describe('Test Products API', () => {
     const response = await restHelper.get('/products', { between: '100,500' });
     expect(response.ok()).toBeTruthy();
     const products = await response.json();
-    products.forEach((product: any) => {
+    products.data.forEach((product: any) => {
       expect(product.price).toBeGreaterThanOrEqual(100);
       expect(product.price).toBeLessThanOrEqual(500);
     });
@@ -65,7 +65,7 @@ test.describe('Test Products API', () => {
     const response = await restHelper.get('/products', { sort: 'name' });
     expect(response.ok()).toBeTruthy();
     const products = await response.json();
-    const names = products.map((p: any) => p.name);
+    const names = products.data.map((p: any) => p.name);
     const sortedNames = [...names].sort();
     expect(names).toEqual(sortedNames);
   });
@@ -74,7 +74,7 @@ test.describe('Test Products API', () => {
     const response = await restHelper.get('/products', { page: 2 });
     expect(response.ok()).toBeTruthy();
     const products = await response.json();
-    expect(Array.isArray(products)).toBeTruthy();
+    expect(Array.isArray(products.data)).toBeTruthy();
     // Optionally, check if products correspond to page 2
   });
 
