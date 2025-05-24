@@ -3,9 +3,6 @@ description: "Checks out code, sets up Node.js, and installs npm dependencies wi
 runs:
   using: "composite"
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
