@@ -12,10 +12,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        uses: ./.github/actions/install-dependencies
+        uses: ./.github/actions/setup
 
       - name: Run Playwright tests
-        uses: ./.github/actions/run-tests
+        uses: ./.github/actions/tests
 
       - name: Upload Playwright report
         if: always()
