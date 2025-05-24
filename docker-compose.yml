@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.44.1-jammy
+    container_name: playwright-tests
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: npx playwright test
+    environment:
+      - NODE_ENV=development
+    # Uncomment and set if your API is running on host
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"

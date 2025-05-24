@@ -1,0 +1,8 @@
+name: "Run Playwright Tests"
+description: "Runs Playwright tests"
+runs:
+  using: "composite"
+  steps:
+    - name: Run Playwright tests
+      run: npx playwright test
+      shell: bash
