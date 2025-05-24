@@ -47,16 +47,16 @@ test.describe('Test Products API', () => {
     expect(response.ok()).toBeTruthy();
     const products = await response.json();
     products.data.forEach((product: any) => {
-      expect(product.is_rental).toBe(true);
+      expect(product.is_rental).toBe(true); // test will always fail because of the bug in the API
     });
   });
 
   test('should filter products between price range', async () => {
-    const response = await restHelper.get('/products', { between: '100,500' });
+    const response = await restHelper.get('/products', { between: '10,500' });
     expect(response.ok()).toBeTruthy();
     const products = await response.json();
     products.data.forEach((product: any) => {
-      expect(product.price).toBeGreaterThanOrEqual(100);
+      expect(product.price).toBeGreaterThanOrEqual(10);
       expect(product.price).toBeLessThanOrEqual(500);
     });
   });
