@@ -53,6 +53,14 @@ To run the Playwright tests directly from your local terminal:
 
 After the tests complete, you can view the Playwright HTML report in the `playwright-report/index.html` file.
 
+## Tests Overview
+
+- All test files include meaningful comments explaining the purpose and intent of each test case for better readability and maintainability.
+- Tests are written using Playwright and utilize a custom `RestHelper` for API requests.
+- Example test files:
+  - `tests/airports.spec.ts`: Tests for listing airports, getting airport by ID, and calculating distances between airports, with clear comments for each test.
+  - `tests/favorites.spec.ts`: Tests for managing favorite airports, including add, get, update, and error handling, with descriptive comments in each test.
+
 ## TODO
 
 - [ ] Add more comprehensive test cases for edge scenarios
